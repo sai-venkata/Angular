@@ -41,9 +41,7 @@ export class AppComponent {
         if(element.email === email.value){
           if (element.password === password.value) {
                counter += 1 
-               alert("logged in")
-              
-              
+               alert("logged in")      
           }
           else{
             alert("wrong password")
@@ -51,15 +49,11 @@ export class AppComponent {
           }
         }
 
-        if (counter === 0) {
-          alert('invalid credentials');
+        if(idx === userArray.length-1 && counter === 0){
+            alert('invalid credentials');
         }
 
       })
-
-      
-
-
       
     });
   }
