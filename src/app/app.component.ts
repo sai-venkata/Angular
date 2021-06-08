@@ -11,9 +11,9 @@ export class AppComponent {
     let user: object;
     let userArray: Array<any> = [];
     let counter : number = 0;
-    let form = document.getElementById('form-register') as HTMLFormElement;
+    let formRegister = document.getElementById('form-register') as HTMLFormElement;
 
-    form.addEventListener('submit', (e) => {
+    formRegister.addEventListener('submit', (e) => {
       e.preventDefault();
       let email = document.getElementById('email') as HTMLInputElement;
       let password = document.getElementById('password') as HTMLInputElement;
