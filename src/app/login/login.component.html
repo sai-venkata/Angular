@@ -11,3 +11,40 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form> -->
+
+<div class="item">
+    <form
+      class="login-form"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmitLogin()"
+      id="form-login"
+    >
+      <h3>Login</h3>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email-login"
+          aria-describedby="emailHelp"
+          formControlName="loginEmail"
+          [ngClass]="{ 'is-invalid': loginSubmitted && fl.loginEmail.errors }"
+        />
+        <div id="emailHelp" class="form-text">
+          We'll never share your email with anyone else.
+        </div>
+        <div *ngIf="loginSubmitted && fl.loginEmail.errors" class="error" >
+            <div *ngIf="!fl.loginEmail.errors.required && fl.loginEmail.errors.email">Enter valid email id</div>
+            <div *ngIf="fl.loginEmail.errors.required">Enter  email id</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" formControlName="loginPassword" class="form-control" id="password-login" [ngClass]="{ 'is-invalid': loginSubmitted && fl.loginPassword.errors }" />
+        <div *ngIf="loginSubmitted && fl.loginPassword.errors" class="error" >
+            <div *ngIf="fl.loginPassword.errors.required">Password is required</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled] = "loginForm.invalid && loginForm.touched ? true : loginForm.invalid && !loginForm.touched ? false : true " >Submit</button>
+    </form>
+  </div>

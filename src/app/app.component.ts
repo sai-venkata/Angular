@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,8 @@ export class AppComponent implements OnInit {
       loginEmail: ['', [Validators.required, Validators.email]],
       loginPassword: ['', Validators.required],
     });
+    console.log("login form invalid " , this.loginForm.invalid);
+    console.log("login form invalid " , this.loginForm);
   }
 
   get fg() {
@@ -38,32 +41,11 @@ export class AppComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmitRegister() {
-    this.registerSubmitted = true;
-    console.log(this.registerForm);
-
-    let email = this.registerForm.controls.email.value;
-    let password = this.registerForm.controls.password.value;
-    let name = this.registerForm.controls.name.value;
-    this.user = {
-      name: name,
-      email: email,
-      password: password,
-    };
-    this.userArray.push(this.user);
-    console.log(this.userArray);
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
-  }
+  
   onSubmitLogin() {
     console.log(
       'came here to onsubmit login password',
-      this.loginForm.controls
+      this.loginForm
     );
     this.loginSubmitted = true;
     let counter = 0;
@@ -139,4 +121,5 @@ export class AppComponent implements OnInit {
   //   })
 
   // });
+
 }
